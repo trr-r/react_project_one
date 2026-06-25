@@ -1,13 +1,16 @@
 import React from "react";
 import { useState } from "react";
 
-const Counter = () => {
-  const [num, setNum] = useState(10);
+const Counter = ({start=0}) => {
+  const [num, setNum] = useState(start);
   function plus() {
     setNum(num + 1);
   }
   function minus() {
-    setNum(num - 1);
+    if(num<=0){
+      return 0
+    }
+    else setNum(num - 1)
   }
   return (
     <div>
