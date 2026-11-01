@@ -12,7 +12,10 @@ const api_key = "XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af"
 function App() {
   //const cats = []
   const [cats, setCats] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   async function getCat() {
+    setLoading(true)
     try {
       const url = await axios.get(
         "https://api.api-ninjas.com/v1/cats?min_weight=10",
@@ -22,15 +25,26 @@ function App() {
       )
       //cats.push(...url.data)
       setCats(url.data)
-      console.log(cats)
+      setLoading(false)
+      //console.log(cats)
     } catch (error) {
-      console.log("Произошла ошибка")
+      setLoading(false)
+      setError(true)
     }
   }
+  useEffect(function(){
+console.log(cats)
+  }, [cats])
   //getcat()
   // useEffect(function () {
   //   getCat()
   // }, [])
+  if(loading === true){
+    return <h1>Идет загрузка...</h1>
+  }
+  if(error === true){
+    return <h1>Произошла ошибка</h1>
+  }
   if (cats.length === 0) {
     return (
       <div>
@@ -44,7 +58,7 @@ function App() {
     <div className="App">
       {cats.map((cat) => {
         return (
-          <div>
+          <div key={cat.image_link}>
             <h2>Порода: {cat.name}</h2>
             <h2>Происхождение: {cat.origin}</h2>
             <h2>Минимальный вес: {Math.round(cat.min_weight / 2.2)} кг.</h2>
@@ -53,7 +67,7 @@ function App() {
           </div>
         )
       })}
-      {/* <Counter start={5} />
+       {/* <Counter start={5} />
       <Counter />
       <Data />
       <Hi age={20} name="Полина" />

@@ -1,6 +1,7 @@
 import { sum } from "../functions"
 import {render, fireEvent, screen} from '@testing-library/react'
 import Counter from "../components/Counter"
+import "@testing-library/jest-dom"
 
 
 test('Проверка', function(){
@@ -13,5 +14,5 @@ test('Проверка суммы', function(){
 
 test('Проверка counter', function(){
     render(<Counter/>)
-    expect(screen.getByText("text")).toBeInTheDocument()
+    expect(screen.getByText("+")).toBeInTheDocument()
 })
