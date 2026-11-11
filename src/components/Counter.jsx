@@ -15,8 +15,8 @@ const Counter = ({start=0}) => {
   return (
     <div>
       <p id="text" >{num}</p>
-      <button onClick={plus}>+</button>
-      <button onClick={minus}>-</button>
+      <button onClick={plus} data-testid="plus">+</button>
+      <button onClick={minus} data-testid="minus">-</button>
     </div>
   );
 };

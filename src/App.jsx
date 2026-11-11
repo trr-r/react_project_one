@@ -10,7 +10,6 @@ import { useEffect, useState } from "react"
 const api_key = "XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af"
 
 function App() {
-  //const cats = []
   const [cats, setCats] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -60,10 +59,10 @@ console.log(cats)
         return (
           <div key={cat.image_link}>
             <h2>Порода: {cat.name}</h2>
-            <h2>Происхождение: {cat.origin}</h2>
+            {/* <h2>Происхождение: {cat.origin}</h2>
             <h2>Минимальный вес: {Math.round(cat.min_weight / 2.2)} кг.</h2>
             <h2>Максимальный вес: {Math.round(cat.max_weight / 2.2)} кг.</h2>
-            <img src={cat.image_link} width="300" height="200"></img>
+            <img src={cat.image_link} width="300" height="200"></img> */}
           </div>
         )
       })}
