@@ -4,3 +4,5 @@ const result = arr.map((el)=>{
     return 'текст'
 })
 console.log(result)
+
+console.log(Math.random())
